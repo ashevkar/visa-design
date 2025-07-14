@@ -16,13 +16,24 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3001;
 
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://visa-design-frontend-git-main-aishwarya-shevkars-projects.vercel.app/';
+// const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://visa-design-frontend-git-main-aishwarya-shevkars-projects.vercel.app/';
+
+const allowedOrigins = [
+  'https://visa-design-frontend.vercel.app',
+  'https://visa-design-frontend-git-main-aishwarya-shevkars-projects.vercel.app',
+];
 
 app.use(cors({
-  origin: CLIENT_ORIGIN,
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
-app.use(express.json());
 
 
 // components suggestions API

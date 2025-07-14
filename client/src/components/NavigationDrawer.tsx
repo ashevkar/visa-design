@@ -56,7 +56,6 @@ export default function NavigationDrawer({
 }) {
   const navDrawerRef = useRef<HTMLDialogElement>(null);
   const isMobile = useIsMobile();
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const [history, setHistory] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -84,11 +83,9 @@ export default function NavigationDrawer({
 
   // open/close logic for mobile only
   const openDrawer = () => {
-    setDrawerOpen(true);
     navDrawerRef.current?.showModal();
   };
   const closeDrawer = () => {
-    setDrawerOpen(false);
     navDrawerRef.current?.close();
   };
 

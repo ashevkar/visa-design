@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3001;
 
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://visa-design-frontend-git-main-aishwarya-shevkars-projects.vercel.app/';
 
 app.use(cors({
   origin: CLIENT_ORIGIN,

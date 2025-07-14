@@ -118,7 +118,7 @@ export default function App() {
 
         // call getComponents API
         const response = await fetch(
-          "http://localhost:3001/api/v1/match-components",
+          `${import.meta.env.VITE_API_URL}/api/v1/match-components`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -138,7 +138,7 @@ export default function App() {
 
         // call generate API & pass the matched components
         const generateResponse = await fetch(
-          "http://localhost:3001/api/v1/generate",
+           `${import.meta.env.VITE_API_URL}/api/v1/generate`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

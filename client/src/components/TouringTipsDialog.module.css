@@ -1,0 +1,23 @@
+.tourHighlight {
+  box-shadow: 0 0 0 4px #0074d9, 0 0 16px 4px #0074d988;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1400;
+  transition: box-shadow 0.2s;
+}
+
+.floatingDialog {
+  position: fixed !important;
+  top: unset !important;
+  left: unset !important;
+  right: unset !important;
+  bottom: unset !important;
+  transform: none !important;
+  max-width: 420px;
+  width: 410px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 24px;
+  z-index: 1500;
+}

@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.componentsMap = void 0;
-exports.componentsMap = [
+export const componentsMap = [
     {
         "name": "Button",
         "description": "A clickable button component for user actions.",

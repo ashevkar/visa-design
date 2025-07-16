@@ -1,10 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.generatePrompt = generatePrompt;
-function generatePrompt(query, components) {
+export function generatePrompt(query, components) {
     const componentInfo = components
         .map((c, idx) => `${idx + 1}. ${c.name}: ${c.description} ${c.source}`)
         .join('\n');
+
     // template for AI prompt
     const prompt = [
         {

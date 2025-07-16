@@ -8,7 +8,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { v4 as uuidv4 } from 'uuid';
-import { componentsMap } from './data/componentsMap';
+import { componentsMap } from './data/componentsMap.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,13 +17,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3001;
 
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://visa-design-suggestion-tool.vercel.app';
-
-app.use(cors({
-  
-  origin: CLIENT_ORIGIN,
-  credentials: true
-}));
+// const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://visa-design-suggestion-tool.vercel.app';
+app.use(cors());
 app.use(express.json());
 
 

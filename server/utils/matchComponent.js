@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.matchComponents = matchComponents;
-const componentsMap_1 = require("../data/componentsMap");
-function matchComponents(query, maxResults = 5) {
+import { componentsMap } from "../data/componentsMap.js";
+
+export function matchComponents(query, maxResults = 5) {
     if (!query)
         return [];
     const queryLower = query.toLowerCase();
     const queryTokens = queryLower.split(/\W+/).filter(Boolean);
     // score each component by counting keyword matches
-    const scored = componentsMap_1.componentsMap.map((component) => {
+    const scored = componentsMap.map((component) => {
         let score = 0;
         component.keywords.forEach((kw) => {
             const kwLower = kw.toLowerCase();

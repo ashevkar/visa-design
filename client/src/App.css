@@ -161,7 +161,7 @@ footer, .v-gap-15 {
 }
 @media (prefers-color-scheme: dark) {
   .code-block {
-    background: #005e8a
+    background: #1434CB
 ;
     color: #fff;
   }

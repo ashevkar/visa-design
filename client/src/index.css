@@ -1,2 +1,9 @@
 @import '@visa/nova-styles/styles.css';
 @import '@visa/nova-styles/themes/visa-light/index.css';
+
+.app-root {
+  background: url('/back-white.webp') repeat !important;
+}
+body.dark .app-root {
+  background: url('/back-dark.webp') repeat !important;
+}

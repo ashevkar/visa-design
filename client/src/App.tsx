@@ -100,6 +100,15 @@ export default function App() {
     }
   }, [isDark]);
 
+  // Add or remove the 'dark' class on <body> when isDark changes
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [isDark]);
+
   const toggleTheme = () => setIsDark((prev) => !prev);
 
   type MatchedComponent = {
@@ -223,7 +232,7 @@ export default function App() {
         Visa Nova UI Generator
       </Typography>
       <div
-        className={`app-root${isDark ? " dark" : ""}`}
+        className="app-root"
         style={{
           marginLeft: isMobile ? 0 : sidebarWidth,
           transition: "margin-left 0.2s",

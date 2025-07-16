@@ -3,10 +3,7 @@
     "private": true,
     "version": "1.0.0",
     "scripts": {
-        "install": "npm install --prefix client && npm install --prefix server",
-        "dev": "npm run dev --prefix client & npm run start --prefix server",
-        "start": "npm run start --prefix server",
-        "build": "npm run build --prefix client"
+        "dev": "npm run dev --prefix client & npm run start --prefix server"
     },
     "devDependencies": {
         "@types/express": "^5.0.3",

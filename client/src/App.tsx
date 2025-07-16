@@ -23,13 +23,13 @@ import { Bot } from "lucide-react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-terminal";
-import './index.css';
-import './App.css';
-import NavigationDrawer from './components/NavigationDrawer';
-import LoadingSpinner from './components/LoadingSpinner';
-import TouringTipsDialog from './components/TouringTipsDialog';
+import "./index.css";
+import "./App.css";
+import NavigationDrawer from "./components/NavigationDrawer";
+import LoadingSpinner from "./components/LoadingSpinner";
+import TouringTipsDialog from "./components/TouringTipsDialog";
 
-const hasSeenTour = localStorage.getItem('hasSeenOnboardingTour') === 'true';
+const hasSeenTour = localStorage.getItem("hasSeenOnboardingTour") === "true";
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
@@ -103,9 +103,9 @@ export default function App() {
   // Add or remove the 'dark' class on <body> when isDark changes
   useEffect(() => {
     if (isDark) {
-      document.body.classList.add('dark');
+      document.body.classList.add("dark");
     } else {
-      document.body.classList.remove('dark');
+      document.body.classList.remove("dark");
     }
   }, [isDark]);
 
@@ -126,7 +126,7 @@ export default function App() {
         setLoading(true);
 
         // call getComponents API
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
         const response = await fetch(
           `${API_BASE_URL}/api/v1/match-components`,
           {
@@ -148,7 +148,7 @@ export default function App() {
 
         // call generate API & pass the matched components
         const generateResponse = await fetch(
-           `${API_BASE_URL}/api/v1/generate`,
+          `${API_BASE_URL}/api/v1/generate`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -201,36 +201,13 @@ export default function App() {
 
   // when tour finishes, set flag
   const handleCloseTour = () => {
-    localStorage.setItem('hasSeenOnboardingTour', 'true');
+    localStorage.setItem("hasSeenOnboardingTour", "true");
     setShowTour(false);
     setTourStep(0);
   };
 
   return (
     <>
-      {/* navigation drawer component */}
-      <NavigationDrawer
-        onSelectHistory={(item) => {
-          //restore all UI state from history item
-          setTextareaValue(item.prompt || "");
-          setMatchedComponents(item.components || []);
-          setGeneratedCode(item.snippet ? { result: item.snippet } : null);
-          setActiveHistoryId(item.id || null);
-        }}
-        onNewChat={() => {
-          setTextareaValue("");
-          setMatchedComponents([]);
-          setGeneratedCode(null);
-          setActiveHistoryId(null);
-          setRefreshToken((token) => token + 1);
-        }}
-        showMobileButton={false}
-        refreshToken={refreshToken}
-        darkMode={isDark}
-      />
-      <Typography variant="overline" className="main-heading">
-        Visa Nova UI Generator
-      </Typography>
       <div
         className="app-root"
         style={{
@@ -238,6 +215,30 @@ export default function App() {
           transition: "margin-left 0.2s",
         }}
       >
+        {/* navigation drawer component */}
+        <NavigationDrawer
+          onSelectHistory={(item) => {
+            //restore all UI state from history item
+            setTextareaValue(item.prompt || "");
+            setMatchedComponents(item.components || []);
+            setGeneratedCode(item.snippet ? { result: item.snippet } : null);
+            setActiveHistoryId(item.id || null);
+          }}
+          onNewChat={() => {
+            setTextareaValue("");
+            setMatchedComponents([]);
+            setGeneratedCode(null);
+            setActiveHistoryId(null);
+            setRefreshToken((token) => token + 1);
+          }}
+          showMobileButton={false}
+          refreshToken={refreshToken}
+          darkMode={isDark}
+        />
+        <Typography variant="overline" className="main-heading">
+          Visa Nova UI Generator
+        </Typography>
+
         {/* navBar button + dark mode toggle on mobile, only dark mode toggle on desktop */}
         {isMobile ? (
           <div
@@ -249,10 +250,15 @@ export default function App() {
             }}
           >
             {/* NavBar button (drawer open) */}
-            <Button id="search-chats-btn" onClick={() => {
-              const event = new CustomEvent('openNavDrawer'); // open drawer by dispatching a custom event
-              window.dispatchEvent(event);
-            }} aria-label="Open navigation drawer" colorScheme="tertiary">
+            <Button
+              id="search-chats-btn"
+              onClick={() => {
+                const event = new CustomEvent("openNavDrawer"); // open drawer by dispatching a custom event
+                window.dispatchEvent(event);
+              }}
+              aria-label="Open navigation drawer"
+              colorScheme="tertiary"
+            >
               <VisaNotesTiny />
             </Button>
 
@@ -260,17 +266,23 @@ export default function App() {
             <Button
               id="theme-toggle-btn"
               onClick={toggleTheme}
-              className='round-button'
+              className="round-button"
             >
               {isDark ? <VisaModeLightLow /> : <VisaModeDarkLow />}
             </Button>
           </div>
         ) : (
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginBottom: 16,
+            }}
+          >
             <Button
               id="theme-toggle-btn"
               onClick={toggleTheme}
-              className='round-button'
+              className="round-button"
             >
               {isDark ? <VisaModeLightLow /> : <VisaModeDarkLow />}
             </Button>
@@ -295,7 +307,7 @@ export default function App() {
             <code className="code-block">@visa/nova-react</code> code instantly.
           </Typography>
           <ContentCard
-          id="ui-description-textbox"
+            id="ui-description-textbox"
             style={{
               borderRadius: "25px",
               padding: "10px",
@@ -449,7 +461,6 @@ export default function App() {
           )}
         </Utility>
 
-
         {/* Footer section */}
         <Footer className="custom-footer">
           <Utility
@@ -506,8 +517,8 @@ export default function App() {
           open={showTour}
           step={tourStep}
           onClose={handleCloseTour}
-          onNext={() => setTourStep(s => Math.min(s + 1, 5))}
-          onPrev={() => setTourStep(s => Math.max(s - 1, 0))}
+          onNext={() => setTourStep((s) => Math.min(s + 1, 5))}
+          onPrev={() => setTourStep((s) => Math.max(s - 1, 0))}
         />
       </div>
     </>

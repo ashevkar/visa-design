@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import OpenAI from 'openai';
-import { matchComponents } from './utils/matchComponent.ts';
-import { generatePrompt } from './utils/generatePrompt.ts';
+import { matchComponents } from './utils/matchComponent.js';
+import { generatePrompt } from './utils/generatePrompt.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3001;
 
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://visa-design-frontend-git-main-aishwarya-shevkars-projects.vercel.app:5173';
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://visa-design-suggestion-tool.vercel.app';
 
 app.use(cors({
   

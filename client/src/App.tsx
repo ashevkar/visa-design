@@ -117,8 +117,9 @@ export default function App() {
         setLoading(true);
 
         // call getComponents API
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
         const response = await fetch(
-          `/api/v1/match-components`,
+          `${API_BASE_URL}/api/v1/match-components`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -138,7 +139,7 @@ export default function App() {
 
         // call generate API & pass the matched components
         const generateResponse = await fetch(
-           `/api/v1/generate`,
+           `${API_BASE_URL}/api/v1/generate`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

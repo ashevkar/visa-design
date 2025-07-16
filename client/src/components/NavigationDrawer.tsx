@@ -68,7 +68,8 @@ export default function NavigationDrawer({
   // Fetch history from backend
   useEffect(() => {
     setLoading(true);
-    fetch( `/api/v1/history`)
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+    fetch(`${API_BASE_URL}/api/v1/history`)
       .then(res => res.json())
       .then(data => {
         setHistory(data.history || []);
@@ -99,7 +100,8 @@ export default function NavigationDrawer({
   // delete history item by id
   const handleDeleteHistory = async (id: string) => {
     try {
-      await fetch( `/api/v1/history/${id}`, { method: 'DELETE' });
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+      await fetch(`${API_BASE_URL}/api/v1/history/${id}`, { method: 'DELETE' });
       setHistory(history => history.filter(item => item.id !== id));
 
       // if deleted item is currently open, refresh the page or reset the main view
@@ -117,7 +119,8 @@ export default function NavigationDrawer({
   const handleRenameHistory = async (id: string, newName: string) => {
     try {
       console.log('PATCH', id, newName);
-      const response = await fetch( `/api/v1/history/${id}`, {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+      const response = await fetch(`${API_BASE_URL}/api/v1/history/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newName })

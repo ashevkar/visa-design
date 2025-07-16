@@ -6,7 +6,7 @@
       "use": "@vercel/static-build"
     },
     {
-      "src": "server/package.json",
+      "src": "server/server.js",
       "use": "@vercel/node"
     }
   ],
@@ -19,8 +19,8 @@
       "handle": "filesystem"
     },
     {
-      "src": "/.*",
-      "dest": "/index.html"
+      "src": "/(.*)",
+      "dest": "/client/index.html"
     }
   ]
 }

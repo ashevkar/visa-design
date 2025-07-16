@@ -22,6 +22,12 @@ app.use(cors());
 app.use(express.json());
 
 
+// Healthcheck route
+app.get('/api/v1/healthcheck', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Server is healthy & running.' });
+});
+
+
 // components suggestions API
 app.post('/api/v1/match-components', async (req, res) => {
   try {

@@ -60,8 +60,7 @@ function useSidebarWidth(isMobile: boolean) {
 }
 
 const DARK_THEME_ID = "visa-nova-dark-theme";
-const DARK_THEME_HREF =
-  "/node_modules/@visa/nova-styles/themes/visa-dark/index.css";
+const DARK_THEME_HREF = "/visa-dark.css";
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
